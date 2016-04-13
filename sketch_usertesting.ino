@@ -1,3 +1,8 @@
+/*
+ * Calling out all the sensors and their locations on the Arduino Pro Mini.
+ * SW, X and Y pin are are part of the joystick using a mixture and digital and analog power
+ * All the buttons are digital sensors and are using digital power
+ */ 
 const int SW_pin = 3;
 const int X_pin = A1;
 const int Y_pin = A0; 
@@ -6,7 +11,7 @@ const int button2 = 6;
 const int button3 = 7;
 const int button4 = 8;
 const int button5 = 9;
-
+//declaring the variable names to distinguish all the buttons in code
 int buttonOne;
 int buttonTwo;
 int buttonThree;
@@ -14,6 +19,7 @@ int buttonFour;
 int buttonFive;
 
 void setup() {
+  //declaring all variables as inactive/inputs 
   pinMode(SW_pin, INPUT);
   digitalWrite(SW_pin, HIGH);
   
@@ -34,7 +40,7 @@ void loop() {
   buttonFour = digitalRead(button4);
   buttonFive = digitalRead(button5);
   
-  
+  //Using booleans to call any push or button-presses as a number for Unity to read within C-Sharp
   if(analogRead(X_pin) >= 1010)
   {
   Serial.write(1);  
@@ -53,7 +59,7 @@ void loop() {
   {
   Serial.write(3);    
   Serial.flush();
-  delay(20);
+ // delay(20);
   }
 
    if(analogRead(Y_pin) == 0)
